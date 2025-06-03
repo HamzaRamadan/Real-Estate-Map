@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { exportToPDF } from "../utils/exportToPDF";
 import { Box, Button, CircularProgress, Typography } from "@mui/material";
 
-// مكون شاشة التحميل مع أنيميشن دوران وتوهج
+//  شاشة التحميل مع أنيميشن loading 
 const LoadingScreen: React.FC<{ message: string }> = ({ message }) => (
   <Box
     sx={{
@@ -19,7 +19,7 @@ const LoadingScreen: React.FC<{ message: string }> = ({ message }) => (
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      bgcolor: "rgba(0, 0, 0, 0.85)", // خلفية داكنة شبه شفافة
+      bgcolor: "rgba(0, 0, 0, 0.85)", 
       zIndex: 9999,
       color: "white",
       animation: "fadeIn 0.5s ease-in-out",
@@ -71,17 +71,16 @@ const LoadingScreen: React.FC<{ message: string }> = ({ message }) => (
 export default function ParcelContainer() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [parcels, setParcels] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(true); // حالة تحميل الموقع
+  const [isLoading, setIsLoading] = useState(true); 
   const { t, i18n } = useTranslation();
   const mapViewRef = useRef<any>(null);
 
-  // إيقاف شاشة التحميل بعد وقت معين
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // 3 ثوانٍ (يمكن تعديل الوقت حسب الحاجة)
+    }, 3000);
 
-    return () => clearTimeout(timer); // تنظيف المؤقت
+    return () => clearTimeout(timer); 
   }, []);
 
   const handleSelect = (ids: number[] | null) => {
